@@ -1,0 +1,23 @@
+{% extends "pets/base.html"%}
+{% block header %}
+  <a href="{% url 'pets-create' %}"><button class="btn btn-sm btn-success">Add New Pet</button></a>
+{% endblock header %}
+
+{% block content %}
+    <div class="row m-3 mb-0 text-center">
+      <p class="lead">List of Pets</p>
+    </div>
+    <div class="row p-3 pb-0">
+      <div class="col bg-primary border-end p-2">Name</div>
+      <div class="col bg-primary border-end p-2">Species</div>
+      <div class="col bg-primary p-2">Year Of Birth</div>
+    </div>
+    {% for pet in pets %}
+      <div class="row p-3 pt-0 pb-0">
+        <div class="col bg-secondary border-end border-bottom">{{ pet.name }}</div>
+        <div class="col bg-secondary border-end border-bottom">{{ pet.species }}</div>
+        <div class="col bg-secondary border-bottom">{{ pet.year_of_birth }}</div>
+      </div>
+
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "pets/base.html"%}
+{% load crispy_forms_tags %}
+{% block header %}
+  <a href="{% url 'pets' %}"><button class="btn btn-sm btn-success">View Pets</button></a>
+{% endblock header %}
+{% block content %} 
+<div class="row justify-content-center">
+    <div class="col-sm-8 col-md-4 col-l-3 border p-3 mt-3 rounded-2">
+        <form method="POST" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-center">
+                    Add New Pet
+                </legend>
+                {{ form | crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    Save Pet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
